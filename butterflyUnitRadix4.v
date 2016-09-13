@@ -22,12 +22,12 @@ module butterflyUnitRadix4(
    
 											input clk,
 											
-											input[15:0] cos0,
-											input[15:0] sin0,
-											input[15:0] cos1,
-											input[15:0] sin1,
-											input[15:0] cos2,
-											input[15:0] sin2,
+											input[16:0] cos0,
+											input[16:0] sin0,
+											input[16:0] cos1,
+											input[16:0] sin1,
+											input[16:0] cos2,
+											input[16:0] sin2,
 											
 											input[15:0] x1_re,
 											input[15:0] x1_im,

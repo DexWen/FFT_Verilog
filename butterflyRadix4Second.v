@@ -99,38 +99,38 @@ module butterflyRadix4Second(
 
 //******* followwing parameter come from exp(-1i*2*pi/N*n) above********//
 	//*********** cos *******************//	
-	parameter cos0 = 16'b0111111111111111;				//(1*2^15)-1   origin:1   after:32767  
-	parameter cos1 = 16'b0111111111111111;				//1
-	parameter cos2 = 16'b0111111111111111;				//1
+	parameter cos0 = 17'b0_1000_0000_0000_0000;				//(1*2^15)-1   origin:1   after:32767  
+	parameter cos1 = 17'b0_1000_0000_0000_0000;				//1
+	parameter cos2 = 17'b0_1000_0000_0000_0000;				//1
 	
-	parameter cos3 = 16'b0111_0110_0100_0001;				//0.9239 -> 30273
-	parameter cos4 = 16'b0101_1010_1000_0010;				//0.7071 -> 23170
-	parameter cos5 = 16'b0011_0000_1111_1100;				//0.3827 -> 12540
+	parameter cos3 = 17'b0_0111_0110_0100_0001;				//0.9239 -> 30273
+	parameter cos4 = 17'b0_0101_1010_1000_0010;				//0.7071 -> 23170
+	parameter cos5 = 17'b0_0011_0000_1111_1100;				//0.3827 -> 12540
 	
-	parameter cos6 = 16'b0101_1010_1000_0010;				//0.7071 
-	parameter cos7 = 16'b0000000000000000;					//0
-	parameter cos8 = 16'b1010_0101_0111_1110;				//-0.7071-> -23170
+	parameter cos6 = 17'b0_0101_1010_1000_0010;				//0.7071 
+	parameter cos7 = 17'b0_0000000000000000;					//0
+	parameter cos8 = 17'b1_1010_0101_0111_1110;				//-0.7071-> -23170
 	
-	parameter cos9  = 16'b0011_0000_1111_1100;			//0.3827
-	parameter cos10 = 16'b1010_0101_0111_1110;			//-0.7071
-	parameter cos11 = 16'b1000_1001_1011_1111;			//-0.9239-> -30273
+	parameter cos9  = 17'b0_0011_0000_1111_1100;			//0.3827
+	parameter cos10 = 17'b1_1010_0101_0111_1110;			//-0.7071
+	parameter cos11 = 17'b1_1000_1001_1011_1111;			//-0.9239-> -30273
 	
 	//*********** sin *******************//	
-	parameter sin0 = 16'b0000000000000000;				//0	
-	parameter sin1 = 16'b0000000000000000;				//0
-	parameter sin2 = 16'b0000000000000000;				//0
+	parameter sin0 = 17'b00000000000000000;				//0	
+	parameter sin1 = 17'b00000000000000000;				//0
+	parameter sin2 = 17'b00000000000000000;				//0
 	                    
-	parameter sin3 = 16'b1100_1111_0000_0100;				// 							-0.3827 complement 
-	parameter sin4 = 16'b1010_0101_0111_1110;				//-0.29291					-0.7071
-	parameter sin5 = 16'b1000_1001_1011_1111;				//-0.07614					-0.9239
+	parameter sin3 = 17'b1_1100_1111_0000_0100;				// 							-0.3827 complement 
+	parameter sin4 = 17'b1_1010_0101_0111_1110;				//-0.29291					-0.7071
+	parameter sin5 = 17'b1_1000_1001_1011_1111;				//-0.07614					-0.9239
 	
-	parameter sin6 = 16'b1010_0101_0111_1110;				//-0.7071
-	parameter sin7 = 16'b1111_1111_1111_1111;				//-1
-	parameter sin8 = 16'b1010_0101_0111_1110;				//-0.7071
+	parameter sin6 = 17'b1_1010_0101_0111_1110;				//-0.7071
+	parameter sin7 = 17'b1_1111_1111_1111_1111;				//-1
+	parameter sin8 = 17'b1_1010_0101_0111_1110;				//-0.7071
 		
-	parameter sin9 = 16'b1000_1001_1011_1111;				//-0.9239
-	parameter sin10 = 16'b1010_0101_0111_1110;			//-0.7071	
-	parameter sin11 = 16'b0011_0000_1111_1100;			//0.3827
+	parameter sin9 = 17'b1_1000_1001_1011_1111;				//-0.9239
+	parameter sin10 = 17'b1_1010_0101_0111_1110;			//-0.7071	
+	parameter sin11 = 17'b0_0011_0000_1111_1100;			//0.3827
 
 //		n=0:3
 //	  	X2(n+1) 	= 	W(1,:)*[X1(4*n+1),X1(4*n+2)*exp(-1i*2*pi/N*n),X1(4*n+3)*exp(-1i*2*pi/N*2*n),X1(4*n+4)*exp(-1i*2*pi/N*3*n)].';
@@ -145,8 +145,8 @@ module butterflyRadix4Second(
 //    X2(13)	=	W(4,:)*[X1(1),X1(2)*exp(-1i*2*pi/N*n),X1(3)*exp(-1i*2*pi/N*2*n),X1(4)*exp(-1i*2*pi/N*3*n)].';	
 	butterflyUnitRadix4 butterflyRadix4Unit1(
 																			.clk(clk),
-																			.cos0(cos0),
-																			.sin0(sin0),
+																			.cos0(cos0),		//ar
+																			.sin0(sin0),		//br
 																			.cos1(cos1),
 																			.sin1(sin1),
 																			.cos2(cos2),
