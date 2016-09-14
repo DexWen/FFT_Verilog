@@ -23,7 +23,7 @@
 
 module butterflyRadix4First(
 										input clk,
-										
+										input en,
 										input[15:0] re_0,
 										input[15:0] re_1,
 										input[15:0] re_2,
@@ -91,14 +91,18 @@ module butterflyRadix4First(
 										output[15:0] butterfly_im13,
 										output[15:0] butterfly_im14,
 										output[15:0] butterfly_im15
+										
                             );
+								 
 //  	n=0
 //  	X(n+1)=W(1,:)* ([x(n+1),x(n+5),x(n+9),x(n+13)].');
 //		X(n+5)=W(2,:)* ([x(n+1),x(n+5),x(n+9),x(n+13)].');
 //    X(n+9)=W(3,:)* ([x(n+1),x(n+5),x(n+9),x(n+13)].');
-//    X(n+13)=W(4,:)*([x(n+1),x(n+5),x(n+9),x(n+13)].');								 
+//    X(n+13)=W(4,:)*([x(n+1),x(n+5),x(n+9),x(n+13)].');			
+								 
 	complexAddRadix_4 complexAdd1(
 																	.clk(clk),
+																	
 																	.x1_re(re_0),			//1
 																	.x1_im(im_0),			//0
 																	.x2_re(re_4),			//3
@@ -125,6 +129,7 @@ module butterflyRadix4First(
 //    X(n+13)=W(4,:)*([x(n+1),x(n+5),x(n+9),x(n+13)].');																		 
 	complexAddRadix_4 complexAdd2(
 																	.clk(clk),
+															
 																	.x1_re(re_1),
 																	.x1_im(im_1),
 																	.x2_re(re_5),
@@ -150,6 +155,7 @@ module butterflyRadix4First(
 //    X(n+13)=W(4,:)*([x(n+1),x(n+5),x(n+9),x(n+13)].');		
 	complexAddRadix_4 complexAdd3(
 																	.clk(clk),
+																	
 																	.x1_re(re_2),
 																	.x1_im(im_2),
 																	.x2_re(re_6),
@@ -175,6 +181,7 @@ module butterflyRadix4First(
 //    X(n+13)=W(4,:)*([x(n+1),x(n+5),x(n+9),x(n+13)].');																		 
 	complexAddRadix_4 complexAdd4(
 																	.clk(clk),
+																	
 																	.x1_re(re_3),
 																	.x1_im(im_3),
 																	.x2_re(re_7),
@@ -193,6 +200,7 @@ module butterflyRadix4First(
 																	.re_3(butterfly_re15),
 																	.im_3(butterfly_im15)
 																 );
+																 
 
 
 endmodule

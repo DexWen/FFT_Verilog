@@ -27,7 +27,7 @@ module FFT_top_tb;
 	// Inputs
 	reg clk;
 	reg reset;
-	reg [3:0] address;
+	reg [4:0] address;
 	reg	[15:0] data_tmp11,data_tmp21,data_tmp31,data_tmp41,data_tmp51,data_tmp61,data_tmp71,data_tmp81,data_tmp91,data_tmp101,data_tmp111,data_tmp121,data_tmp131,data_tmp141,data_tmp151,data_tmp161;
 	reg	[15:0] data_tmp12,data_tmp22,data_tmp32,data_tmp42,data_tmp52,data_tmp62,data_tmp72,data_tmp82,data_tmp92,data_tmp102,data_tmp112,data_tmp122,data_tmp132,data_tmp142,data_tmp152,data_tmp162;
 	// Outputs
@@ -80,7 +80,7 @@ module FFT_top_tb;
 		// Initialize Inputs
 		clk = 0;
 		reset = 1'b1;
-		address = 4'd0;
+		address = 5'd0;
 
 		// Wait 100 ns for global reset to finish
 		#25;
@@ -99,16 +99,16 @@ module FFT_top_tb;
 	begin
 		if(!reset)
 			begin
-			if(address==4'd15)
+			if(address==5'd31)
 			begin
-				address = 4'd0;
+				address = 5'd0;
 				//$finish;
 			end
 			else
-				address = address+4'd1;
+				address = address+5'd1;
 			end
 		else
-			address = 4'd0;
+			address = 5'd0;
 	end
 
 //******* display *********************//	

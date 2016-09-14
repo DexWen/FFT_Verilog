@@ -102,7 +102,7 @@
 //			reg 		signed 	[15:0]	finish;
 			reg		signed	[3:0]		counter;
 			reg								finish;
-			
+			reg								dataValid;
 			
 			always @ (posedge clk or negedge reset)
 			if(!reset)
@@ -123,32 +123,37 @@
 					dataout13 <= dataout12;
 					dataout14 <= dataout13;
 					dataout15 <= dataout14;
-					dataout16 <= 16'd0;
-					dataout17 <= 16'd0;
-					dataout18 <= 16'd0;
-					dataout19 <= 16'd0;
-					dataout20 <= 16'd0;
-					dataout21 <= 16'd0;
-					dataout22 <= 16'd0;
-					dataout23 <= 16'd0;
-					dataout24 <= 16'd0;
-					dataout25 <= 16'd0;
-					dataout26 <= 16'd0;
-					dataout27 <= 16'd0;
-					dataout28 <= 16'd0;
-					dataout29 <= 16'd0;
-					dataout30 <= 16'd0;
-					dataout31 <= 16'd0;
-					if(counter == 4'd15)
+					dataout16 <= dataout15;
+					dataout17 <= dataout16;
+					dataout18 <= dataout17;
+					dataout19 <= dataout18;
+					dataout20 <= dataout19;
+					dataout21 <= dataout20;
+					dataout22 <= dataout21;
+					dataout23 <= dataout22;
+					dataout24 <= dataout23;
+					dataout25 <= dataout24;
+					dataout26 <= dataout25;
+					dataout27 <= dataout26;
+					dataout28 <= dataout27;
+					dataout29 <= dataout28;
+					dataout30 <= dataout29;
+					dataout31 <= dataout30;
+					if (datain != 16'd0)
 					begin
-						counter	 <= 4'd0;
-						finish    <= 1'b1;
+						dataValid <= 1'b1;
 					end
-					else
+					if(dataValid == 1'b1)
 					begin
-						counter	 <= counter+4'b1	;
-						finish    <= 1'b0;
+						if(counter == 4'd15)
+						begin
+							counter	 <= 4'd0;
+							finish    <= 1'b1;
+						end
+						else
+							counter	 <= counter+4'b1	;
 					end
+
 			end
 			else
 			begin
@@ -186,6 +191,7 @@
 					dataout31 <= 16'd0;
 					counter	 <= 4'b0	;
 					finish    <= 1'b0;
+					dataValid <= 1'b0;
 			end
 			
 				

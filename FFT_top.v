@@ -21,7 +21,7 @@
 module FFT_top(
 						input		    clk,
 						input		    reset,
-						input	[3:0]  address,
+						input	[4:0]  address,
 						output[15:0] out_re0,
 						output[15:0] out_re1,
 						output[15:0] out_re2,
@@ -126,7 +126,7 @@ module FFT_top(
 //			1	j	-1	-j ]				
 		butterflyRadix4First butterfly1st(
 														  .clk(clk),
-														  
+														  .en(out),
 														  .re_0(inputRe0),
 														  .re_1(inputRe1),
 														  .re_2(inputRe2),
@@ -293,4 +293,4 @@ module FFT_top(
 
 
 
-endmodule
+endmodule 
